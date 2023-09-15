@@ -1,0 +1,13 @@
+<launch>
+  <arg name="world_name"  default="tsudanuma_2_19"/>
+  <arg name="verbose"     default="true"/>
+  <arg name="gui"         default="true"/>
+
+  <include file="$(find-pkg-share gazebo_ros)/launch/gzserver.launch.py">
+    <arg name="world" value="$(find-pkg-share raspicat_map2gazebo)/config/world/$(var world_name).world"/>
+  </include>
+
+  <group if="$(var gui)">
+    <include file="$(find-pkg-share gazebo_ros)/launch/gzclient.launch.py"/>
+  </group>
+</launch>

@@ -1,0 +1,12 @@
+<launch>
+  <arg name="map_yaml"      default="$(find-pkg-share raspicat_map2gazebo)/config/map/map_tsudanuma_2_19.yaml"/>
+  <arg name="map_pgm"       default="$(find-pkg-share raspicat_map2gazebo)/config/map/map_tsudanuma_2_19.pgm"/>
+  <arg name="config_dir"    default="$(find-pkg-share raspicat_map2gazebo)/config"/>
+  <arg name="world_name"    default="tsudanuma_2_19"/>
+  <arg name="author_name"   default=""/>
+  <arg name="email"         default=""/>
+
+  <executable cmd="ros2 run raspicat_map2gazebo map2gazebo_docker.sh -- $(var map_yaml) $(var map_pgm) $(var config_dir) $(var world_name) $(var author_name) $(var email)" cwd="/" launch-prefix="" output="screen"/>
+  <executable cmd="ros2 run raspicat_map2gazebo output_check.sh" cwd="/" launch-prefix="" output="screen"/>
+  <executable cmd="ros2 run raspicat_map2gazebo create_launch_xml.sh -- $(var world_name)" cwd="/" launch-prefix="" output="screen"/>
+</launch>
