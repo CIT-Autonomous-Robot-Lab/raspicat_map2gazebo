@@ -2,7 +2,7 @@
 
 echo -n \
 '<launch>
-  <arg name="world_name"                    default="tsudanuma_2_19"/>
+  <arg name="world_name"                    default="Free_Name"/>
   <arg name="verbose"                       default="true"/>
   <arg name="gui"                           default="true"/>
   <arg name="x_pose"                        default="0.0"/>
