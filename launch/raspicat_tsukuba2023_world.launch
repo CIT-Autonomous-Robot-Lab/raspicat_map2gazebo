@@ -1,18 +1,18 @@
 <launch>
   <arg name="world_name"                    default="tsukuba2023"/>
-  <arg name="verbose"                       default="true"/>
-  <arg name="gui"                           default="true"/>
+  <arg name="verbose"                       default="false"/>
+  <arg name="gazebo"                        default="true"/>
   <arg name="x_pose"                        default="0.0"/>
   <arg name="y_pose"                        default="0.0"/>
-  <arg name="rviz"                          default="false"/>
+  <arg name="rviz"                          default="true"/>
   <arg name="use_joint_state_publisher"     default="false"/>
 
   <include file="$(find-pkg-share gazebo_ros)/launch/gzserver.launch.py">
     <arg name="world" value="$(find-pkg-share raspicat_map2gazebo)/config/world/$(var world_name).world"/>
   </include>
 
-  <group if="$(var gui)">
-    <include file="$(find-pkg-share gazebo_ros)/launch/gzclient.launch.py"/>
+  <group if="$(var gazebo)">
+    <executable cmd="bash -c 'sleep 5; ros2 launch gazebo_ros gzclient.launch.py'" cwd="/" launch-prefix="" output="screen"/>
   </group>
 
   <include file="$(find-pkg-share raspicat_bringup)/launch/robot_state_publisher.launch.py">
@@ -27,4 +27,11 @@
   <include file="$(find-pkg-share raspicat_gazebo)/launch/raspicat_simulation.launch.py">
     <arg name="rviz" value="$(var rviz)"/>
   </include>
+
+  <group if="$(var gazebo)">
+    <executable cmd="bash -c &quot;sleep 8; xdotool windowactivate \$(wmctrl -lx | grep 'Gazebo' | awk '{print \$1}'); xdotool key super+Left&quot;" cwd="/" launch-prefix="" output="screen"/>
+  </group>
+  <group if="$(var rviz)">
+    <executable cmd="bash -c &quot;sleep 5; xdotool windowactivate \$(wmctrl -lx | grep 'RViz' | awk '{print \$1}'); xdotool key super+Right&quot;" cwd="/" launch-prefix="" output="screen"/>
+  </group>
 </launch>
