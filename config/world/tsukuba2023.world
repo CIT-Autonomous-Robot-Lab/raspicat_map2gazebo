@@ -1,9 +1,9 @@
 <sdf version='1.7'>
   <world name='default'>
     <light name='sun' type='directional'>
-      <cast_shadows>1</cast_shadows>
-      <pose>0 0 10 0 -0 0</pose>
-      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <cast_shadows>0</cast_shadows>
+      <pose>0 0 0 0 0 0</pose>
+      <diffuse>1 1 1 1</diffuse>
       <specular>0.2 0.2 0.2 1</specular>
       <attenuation>
         <range>1000</range>
@@ -11,7 +11,7 @@
         <linear>0.01</linear>
         <quadratic>0.001</quadratic>
       </attenuation>
-      <direction>-0.5 0.1 -0.9</direction>
+      <direction>0 0 -10</direction>
       <spot>
         <inner_angle>0</inner_angle>
         <outer_angle>0</outer_angle>
@@ -181,10 +181,10 @@
       <pose>0 0 0 0 -0 0</pose>
     </model>
     <state world_name='default'>
-      <sim_time>966 892000000</sim_time>
-      <real_time>971 553072801</real_time>
-      <wall_time>1723303276 124414763</wall_time>
-      <iterations>966892</iterations>
+      <sim_time>0</sim_time>
+      <real_time>0</real_time>
+      <wall_time>1723773125 926397856</wall_time>
+      <iterations>75998</iterations>
       <model name='map_satellite_36.0834057_140.0767_155_155'>
         <pose>34.2516 -55.3538 0 0 0 -3.06098</pose>
         <scale>1 1 1</scale>
@@ -211,7 +211,7 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>-110.574 -50.0476 288.753 -0 1.1058 -0.02781</pose>
+        <pose>-6.91099 -0.117401 1.793 0 0.1258 -0.031811</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
